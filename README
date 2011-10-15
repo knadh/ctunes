@@ -1,0 +1,54 @@
+A C programming exercise I did while ago.
+Maybe someone will find it useful.
+
+                   _______
+                  |__   __|
+                  ___| |_   _ _ __   ___  ___
+                 / __| | | | | '_ \ / _ \/ __|
+                | (__| | |_| | | | |  __/\__ \
+                 \___|_|\__,_|_| |_|\___||___/
+		================================================
+		C Programming project
+		cTunes v1.8
+
+		Kailash Nadh
+		http://kailashnadh.name
+		================================================
+
+
+CONTENTS
+========
+screenshots		- screenshots of the app (windows) in action
+
+ctunes/data		- the directory where the data files are kept
+ctunes/data/tunes.dat	- the main data file (binary format)
+ctunes/output		- all exported records and exported metrics are created
+			  in this directory
+
+ctunes/main.c		- the main program
+ctunes/lib.c		- general/misc functions
+ctunes/db.c		- database/file operations
+ctunes/menu.c		- menus and cli
+ctunes/ctunes.h		- the program's definition library
+
+ctunes/ctunes.exe	- Compiled Windows binary
+ctunes/ctunes.bin	- Compiled Linux binary
+
+
+
+COMPILING
+=========
+All four .c files (main, lib, db, menu) have to be compiled together
+
+	eg: with gcc,
+		gcc main.c lib.c db.c menu.c
+
+	eg: with dmc (digital mars)
+		dmc main.c lib.c db.c menu.c
+
+
+USAGE
+=====
+This packages comes with two compiled binaries, one for Windows (ctunes.exe) and one for linux (ctunes.bin)
+	Windows - Simply execute ctunes.exe by double clicking
+	Linux - Execute by double clicking, or from command line: ./ctunes.bin

@@ -1,0 +1,3 @@
+Algorithm, Sorted by field, Data size, Iterations, Swaps, Execution time
+"Selection sort", "28", "Album", "378", "166", "0.000"
+"Bubble sort", "28", "Album", "756", "172", "0.000"

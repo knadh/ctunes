@@ -1,0 +1,100 @@
+                   _______
+                  |__   __|
+                  ___| |_   _ _ __   ___  ___
+                 / __| | | | | '_ \ / _ \/ __|
+                | (__| | |_| | | | |  __/\__ \
+                 \___|_|\__,_|_| |_|\___||___/
+		================================================
+		C Programming project
+		cTunes v1.8
+
+		Kailash Nadh
+		http://kailashnadh.name
+		================================================
+
+REPORT
+=======
+
+----------------------------------
+1) Runtime data storage and access
+----------------------------------
+When data is read from the user (strings, characters, integers etc), they are
+stored in temporary variables of native types, or dynamic pointers where ever
+necessary. Certain portions use malloc() to allocate a memory block, store the
+user input, process it and free() it after use.
+
+
+
+-----------------------------------
+2) Sorting and searching algorithms
+-----------------------------------
+
+Searching
+=========
+Only a single search algorithm has been used in cTunes, that is linear search.
+It is invoked when a user requests a search. The function is capable of searching
+for the following fields in the program: artist, title, album, genre, year
+
+Linear search is considered to be the least efficient of all search algorithms,
+provided the data set in question is large. In this particular case, the data
+is minimal in size, only a few dozen records, which even if grown to a
+few hundred, the algorithm would be able to search in under a second.
+
+The strstr() function was used to check the presence of the search key in the 
+chosen field, where both strings were converted to lower case first.
+eg: strstr(lowercase_artist, lowercase_searchkey);
+
+
+Sorting
+=========
+Two sorting algorithms have been implemented in cTunes, namely selection sort and
+bubble sort. These run behind the scenes when the user requests to sort the
+records (by artist, title, album, genre, year).
+
+These two algorithms are run on the same data set, one after other, and the
+following details are recorded.
+	- Data size, Number of iterations through data, Swaps made, Execution time
+
+This data is then made available on the 'Diagnostics' menu, which can be viewed
+on the screen or exported to an xml/csv/html file.
+
+
+Despite numerous trials, both the algorithms executed in under a second (due to
+the small size of the data set), hence comparing there efficiency proved to be
+difficult.
+
+For sorting string fields, the strcmp() function was put to use.
+
+
+
+
+--------------------------
+3) The diagnostic system
+--------------------------
+The diagnostic system simply records various factors when an algorithm runs,
+namely (Data size, Number of iterations through data, Swaps made, Execution time)
+and makes them available to the user, viewable on the screen or an external file
+as xml/csv/html
+
+
+
+
+--------------------------
+4) Data storage and access
+--------------------------
+cTunes uses C's native 'struct to binary file' routines to write and read data
+strutures on the fly. This eliminates all the data validation hassles which would
+follow if the data were to be saved in plain text (csv) format.
+
+The system writes all the data in the memory to a binary data file on the fly,
+if the user requests (eg: after sorting / adding / delete records)
+
+When the system reads the data from binary file, it is unaware of the number of
+records in the file. Hence, a dynamic memory allocation routine is effectively
+put to use (contained in db.c)
+
+In a loop that iterates through the file, the following bit exists that
+dynamicaally allocates necessary memory for the struts (datatype: Tune)
+
+	db_tunes = (Tune **)realloc(db_tunes, (db_size + 1) * sizeof(Tune *));
+	db_tunes[db_size] = (Tune *) malloc(sizeof(Tune));
